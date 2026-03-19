@@ -1,0 +1,14 @@
+export const categories = [
+  "Cosmetic Ingredients Lip Gloss Base",
+  "Cosmetics  Natural Oils",
+  "Cosmetics, Lip & Lip Gloss Flavors (OIL BASE)",
+  "FOOD GRADE BEST FOR BEAKING",
+  "HIGH -QUALITY OIL-BASE PIGMENT FOR LIPGLOSS PRODUCTION",
+  "LIPGLOSS INGREDIENTS",
+  "MIXING TOOL",
+  "PACKAGING PLASTIC",
+  "PLASTIC PACKAGING MATERIALS",
+  "FRUITS SHAPES",
+  "LIPGLOSS ESSENTIAL",
+  "MULTIPURPOSE BUTTER"
+]

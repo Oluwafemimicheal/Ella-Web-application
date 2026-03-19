@@ -1,0 +1,12 @@
+.heroSlider{
+  height: 400px;
+}
+
+.swiper-navigation-icon{
+  color: rgb(186, 187, 186) !important;
+  width: 10px !important;
+}
+.swiper-pagination-progressbar{
+  background-color: #e6e6e6 !important;
+  margin-top: 35% !important;
+}
