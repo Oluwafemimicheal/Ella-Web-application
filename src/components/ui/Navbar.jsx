@@ -6,9 +6,12 @@ import DropMenu from "./DropMenu";
 import { LandmarkIcon, Menu, ShoppingCart, UserCheck2 } from "lucide-react";
 import { categories } from "@/utils/staticData";
 import CategorySearchListDisplay from "../common/CategorySearchListDisplay";
+import { Link } from "react-router-dom";
+import SideMenu from "./SideMenu";
 
 const Navbar = () => {
   const [menu, setMenu] = useState({ categories: false, help: false })
+  const [showMenu, setShowMenu] = useState(false)
   const [search, setSearch] = useState('')
   const [searchList, setSearchList] = useState([])
 
@@ -21,15 +24,16 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full lg:w-300 mx-auto lg:pt-5 pt-3 lg:px-0 px-5 text-gray-800">
-      <div className="flex justify-between items-center lg:gap-10 gap-3">
+    <nav className="w-full lg:w-300 mx-auto lg:pt-5 lg:pb-0 py-3 lg:px-0 px-5 text-gray-800">
+      <div className="flex justify-between items-center lg:gap-10 gap-10">
         {/* menu and logo */}
-        <div className="flex items-center gap-5">
+        <Link to={'/'} className="flex items-center gap-5">
           <div className="flex items-center gap-1">
             <img src={logo} alt="Logo" width={40} />
             <h1 className="hidden lg:block font-bold lg:text-lg">Ella Nuts and Oils</h1>
           </div>
-        </div>
+        </Link>
+
         {/* search product */}
         <div className="grow">
           <form className="flex items-center">
@@ -47,7 +51,10 @@ const Navbar = () => {
         {/* CTA buttons */}
         <div className="flex items-center">
           <div className="lg:hidden">
-            <Menu />
+            <Menu onClick={() => setShowMenu(prev => !prev)} />
+            {
+              showMenu && <SideMenu closeMenu={setShowMenu} />
+            }
           </div>
           <div className="hidden lg:flex items-center gap-5">
             <button className="flex flex-col items-center hover:text-amber-600 cursor-pointer">
@@ -64,7 +71,7 @@ const Navbar = () => {
                   All Categories
                 </button>
               </div>
-              <div onMouseLeave={() => setMenu(false)} className={`${menu.categories ? "max-h-auto transform translate-y-0 py-5 z-10" : "max-h-0  -z-99"} mt-7 absolute left-0 right-0  w-full bg-gray-100 text-gray-600 shadow-md transition-all duration-300`}>
+              <div onMouseLeave={() => setMenu(false)} className={`${menu.categories ? "max-h-auto transform translate-y-0 py-5 z-10" : "max-h-0  -z-99"} mt-14 absolute left-0 right-0  w-full bg-gray-100 text-gray-600 shadow-md transition-all duration-300`}>
                 <div className="w-300 mx-auto" >
                   {/* Categories List */}
                   <div className="w-max border-r-2 border-amber-600 px-5">
@@ -80,58 +87,9 @@ const Navbar = () => {
             </div>
 
             {/* Help Display dropdown action */}
-            <div>
-              <button className="flex items-center gap-1 text-sm hover:text-amber-600 cursor-pointer" onMouseOver={() => setMenu({ help: true })}>
+            <Link to={'/about'}>
                 <h3>About product</h3>
-              </button>
-              <div onMouseLeave={() => setMenu({ help: false })} className={`${menu.help ? "max-h-auto transform translate-y-0 py-5 z-10" : "max-h-0  -z-99"} mt-7 absolute left-0 right-0  w-full bg-gray-100 text-gray-500 transition-all duration-300`}>
-                <div className="w-300 mx-auto" >
-                  {/* Categories List */}
-                  {
-                    menu.help && <div className="flex flex-col justify-center gap-5 items-center">
-                      <p><span className="text-bold text-gold-soft">At ELLA NUTS AND OIL</span>, we are committed to supplying top quality  raw materials that power innovation across the cosmetics, personal care, wellness, and food production industries. As a trusted sourcing partner, we provide manufacturers, formulators, and emerging brands with high-quality ingredients and packaging solutions designed to support modern product development.
-                      </p>
-
-                      <p>
-
-                        Our carefully curated portfolio includes a wide range of raw materials used in beauty and wellness formulations. We supply lip gloss ingredients, cosmetic-grade oils, food-grade oils, carrier oils, aromatherapy oils, along with advanced cosmetic powders such as hyaluronic acid, kojic alpha-Abutin and other functional actives widely used in skincare and personal care formulations. In addition, we offer Ayurvedic ingredients and natural butters valued for their nourishing and therapeutic properties.
-                      </p>
-
-
-                      Understanding that successful product development extends beyond ingredients alone, we also provide reliable packaging solutions that help brands efficiently bring their products to market. From concept to finished product, our goal is to support our customers throughout the production journey.<br />
-
-                      Quality, consistency, and integrity define everything we do. We partner with trusted producers and suppliers to ensure that every material meets strict standards for purity, performance, and reliability. Through strong sourcing networks and careful quality management, we deliver ingredients that businesses can depend on for both small-scale and large-scale production.
-                      <br />
-
-                      <p>
-
-                        Our company was built on the belief that exceptional products begin with exceptional ingredients. By combining reliable supply, competitive pricing, and a commitment to service, we strive to empower brands, entrepreneurs, and manufacturers to create products that stand out in today’s competitive marketplace.<br />
-
-                        As we continue to grow, our vision is to become a recognized leader in the supply of raw materials and packaging solutions for the beauty, wellness, and food industries-supporting innovation, quality, and excellence at every stage of production. <br />
-
-                        Our Vision
-                        To become a globally trusted supplier of premium raw materials for cosmetics, wellness, and food production industries while supporting the growth of both emerging brands and established manufacturers. <br />
-
-                        Our Core Values
-                        Quality – We prioritize sourcing and supplying materials that meet the highest standards of purity, safety, and performance.
-
-                        Integrity – We operate with honesty, transparency, and professionalism in every aspect of our business.
-
-                        Reliability – Our customers depend on consistent supply and dependable service, and we are committed to delivering both.
-
-                        Innovation – We support modern product development by providing ingredients that help brands create high-performance and competitive products.
-
-                        Partnership – We believe in building long-term relationships with our customers, suppliers, and partners to drive mutual growth and success.</p>
-
-                    </div>
-
-                  }
-                  {/* Categories items display */}
-                  <div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </Link>
 
             {/* Cart button */}
             <button className="flex items-center gap-1 text-sm hover:text-amber-600 cursor-pointer">
@@ -142,7 +100,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between w-full h-10 mt-2">
+
+
+      <div className="hidden lg:flex items-center justify-between w-full h-10 mt-2">
         <ul className="flex items-center gap-5 text-sm">
           <li>All Category</li>
           <li>New products</li>

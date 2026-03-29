@@ -40,6 +40,7 @@ const Slider = () => {
           disableOnInteraction: false,
           pauseOnMouseEnter: true
         }}
+
         speed={1000}
         pagination={{
           clickable: true,
@@ -55,7 +56,7 @@ const Slider = () => {
             </SwiperSlide>
           })
         }
-      </Swiper>
+      </Swiper >
     </>
   );
 }

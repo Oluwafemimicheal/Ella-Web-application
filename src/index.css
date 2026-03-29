@@ -29,6 +29,12 @@ body {
   background-color: rgb(250, 250, 250);
 }
 
+@layer components {
+  .wrapper{
+    @apply w-full px-5 lg:px-0 lg:w-300 mx-auto lg:py-10 py-5
+  }
+}
+
 *{
   outline: none;
 }
@@ -55,4 +61,16 @@ body {
 }
 .hero-3{
   background: url("./assets/images/nora-topicals-4hVzxEl5pXU-unsplash.jpg") no-repeat center/cover;
+}
+
+.footer > div > ul{
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.footer > div > ul > li:hover{
+  text-decoration: underline;
+  cursor: pointer;
+  color: rgb(202, 179, 46);
 }

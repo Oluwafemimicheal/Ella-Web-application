@@ -2,12 +2,13 @@ import { formatPrice } from "@/utils/formatPrice"
 import { useProducts } from "../hooks/useProducts"
 import { Heart } from "lucide-react"
 import { Btn, BtnPrimary } from "@/components/common/Buttons"
+import { Link } from "react-router-dom"
 
 
 const ProductDetails = ({ product }) => {
   const { status } = useProducts()
   return (
-    product ? <div className="group w-full lg:h-65 h-95 bg-amber-600 relative rounded-md shadow-lg p-2  overflow-hidden">
+    product ? <Link to={`/product/${product?.id}`}> <div className="group w-full lg:h-65 h-95 bg-amber-600 relative rounded-md shadow-lg p-2  overflow-hidden">
       <div className=" w-full lg:h-40 h-70 overflow-hidden flex justify-center items-center bg-white p-3 rounded-md relative">
         <img src={product?.thumbnail} alt="product" width={160} className="group-hover:scale-125 transition-all" />
         <span className="bg-amber-700 text-white p-1 rounded-sm text-[10px] absolute top-2 right-2 inline">New Stock</span>
@@ -33,7 +34,7 @@ const ProductDetails = ({ product }) => {
           <p className="text-[12px] font-bold">MOQ: <span>10 pieces - Available</span></p>
         </div>
       </div>
-    </div> : <div>
+    </div></Link> : <div>
       {status === 'loading' && <Skeleton height={90} width={90} highlightColor="orange" />}
     </div>
 

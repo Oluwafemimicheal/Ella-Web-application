@@ -9,21 +9,11 @@ import SaleProduct from '@/components/ui/SaleProduct'
 const Home = () => {
   return (
     <>
-      <header className='relative bg-white z-99 shadow-sm'>
-        <Navbar />
-      </header>
-      <main>
-        {/* <Slider/> */}
-        <div className='py-0'>
-          <Slider/>
-        </div>
-        <SaleProduct/>
-        <ProductListing />
-      </main>
-      <footer>
-        <Footer/>
-      </footer>
-
+      <div className='py-0'>
+        <Slider />
+      </div>
+      <SaleProduct />
+      <ProductListing />
     </>
   )
 }

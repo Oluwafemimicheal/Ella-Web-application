@@ -26,7 +26,6 @@ const SaleProduct = () => {
               <button className='bg-gold-soft hover:bg-gold py-2 px-5 font-bold text-white rounded-lg cursor-pointer relative overflow-hidden'> Explore Now</button>
             </div>
 
-
             <div className='flex-1 overflow-hidden'>
                 <ProductSlider/>
             </div>
