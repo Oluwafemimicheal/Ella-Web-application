@@ -1,13 +1,13 @@
-import { Amphora, CalendarHeart, ChevronDown, ChevronRight, Facebook, FacebookIcon, Grape, HandCoins, Instagram, Joystick, Lollipop, Package, Plus, Shapes, ShoppingBasket, Truck } from 'lucide-react'
+import { Amphora, CalendarHeart, ChevronRight, Facebook, HandCoins, Instagram, Joystick, Lollipop, Package, Plus, Shapes, ShoppingBasket, Truck } from 'lucide-react'
 import React from 'react'
 import logo from "../../assets/images/simple-logo.png"
-import { FaJediOrder, FaTiktok, FaWhatsapp } from 'react-icons/fa6'
+import { FaTiktok, FaWhatsapp } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 
 const SideMenu = ({ closeMenu }) => {
   return (
-    <div onClick={() => closeMenu(false)} className='fixed top-0 left-0 w-full bg-gray-400/40 h-screen'>
-      <div onClick={(e) => e.stopPropagation()} className='w-[80%] bg-white h-full flex flex-col pointer-events-none'>
+    <div onClick={() => closeMenu(false)} className='z-99 fixed top-0 left-0 w-full bg-gray-400/40 h-screen'>
+      <div onClick={(e) => e.stopPropagation()} className='w-[80%] bg-white h-full flex flex-col'>
         <div className='p-3 flex justify-between pb-2 border-b border-gray-300  font-semibold'>
           <Link to={'/'} className="flex items-center gap-5">
             <div className="flex items-center gap-1">

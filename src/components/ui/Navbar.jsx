@@ -3,11 +3,13 @@ import { IoSearchOutline } from "react-icons/io5";
 import logo from "../../assets/images/simple-logo.png"
 import flag from "../../assets/icons/nigeria-flag.png"
 import DropMenu from "./DropMenu";
-import { LandmarkIcon, Menu, ShoppingCart, UserCheck2 } from "lucide-react";
+import { LandmarkIcon, Menu, ShoppingCart, User, UserCheck2 } from "lucide-react";
 import { categories } from "@/utils/staticData";
 import CategorySearchListDisplay from "../common/CategorySearchListDisplay";
 import { Link } from "react-router-dom";
 import SideMenu from "./SideMenu";
+import Cart from "@/pages/Cart";
+import { FaCartPlus } from "react-icons/fa6";
 
 const Navbar = () => {
   const [menu, setMenu] = useState({ categories: false, help: false })
@@ -24,38 +26,44 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full lg:w-300 mx-auto lg:pt-5 lg:pb-0 py-3 lg:px-0 px-5 text-gray-800">
-      <div className="flex justify-between items-center lg:gap-10 gap-10">
+    <nav className="w-full lg:w-300 mx-auto lg:pt-5 lg:pb-0 py-3 lg:px-0 text-gray-800">
+      <div className="flex flex-col lg:flex-row justify-between items-center lg:gap-10 gap-2">
         {/* menu and logo */}
-        <Link to={'/'} className="flex items-center gap-5">
-          <div className="flex items-center gap-1">
-            <img src={logo} alt="Logo" width={40} />
-            <h1 className="hidden lg:block font-bold lg:text-lg">Ella Nuts and Oils</h1>
+        <div className="w-full lg:w-max flex justify-between items-center px-5 lg:px-0">
+          <Link to={'/'} className="flex items-center gap-5">
+            <div className="flex items-center gap-1">
+              <img src={logo} alt="Logo" width={30} />
+              <h1 className="block  font-bold lg:text-lg">Ella Nuts and Oils</h1>
+            </div>
+          </Link>
+
+          <div className="lg:hidden flex items-center gap-4">
+            <ShoppingCart />
+            <User />
+            <Menu onClick={() => setShowMenu(prev => !prev)} />
+            {
+              showMenu && <SideMenu closeMenu={setShowMenu} />
+            }
           </div>
-        </Link>
+
+        </div>
 
         {/* search product */}
-        <div className="grow">
+        <div className="w-full lg:flex-1 lg:px-0 px-2">
           <form className="flex items-center">
-            <div className="flex grow items-center gap-3 border-2 border-gold-soft rounded-l-md lg:py-1 py-1 lg:px-3 px-1 relative">
+            <div className="flex grow items-center gap-3 border-2 border-gold-soft  lg:py-1 py-1 lg:px-3 px-1 relative">
               <IoSearchOutline />
               <input type="text" placeholder="Search for product and categories" className="grow text-sm lg:text-lg" value={search} onChange={filterCategories} />
               <div className="absolute top-10 w-full">
                 {!search <= 0 ? <CategorySearchListDisplay items={searchList} /> : null}
               </div>
             </div>
-            <button className="lg:font-semibold lg:text-md text-sm py-1.5 lg:py-2.5 lg:px-4 px-1.5 lg:rounded-r-md bg-gold-soft text-white cursor-pointer hover:bg-gold-soft/">Search</button>
+            <button className="lg:font-semibold lg:text-md text-sm py-1.5 lg:py-2.5 lg:px-4 px-1.5  bg-gold-soft text-white cursor-pointer hover:bg-gold-soft/">Search</button>
           </form>
         </div>
 
         {/* CTA buttons */}
         <div className="flex items-center">
-          <div className="lg:hidden">
-            <Menu onClick={() => setShowMenu(prev => !prev)} />
-            {
-              showMenu && <SideMenu closeMenu={setShowMenu} />
-            }
-          </div>
           <div className="hidden lg:flex items-center gap-5">
             <button className="flex flex-col items-center hover:text-amber-600 cursor-pointer">
               <h3 className="text-xs">Deliver to:</h3>
@@ -88,7 +96,7 @@ const Navbar = () => {
 
             {/* Help Display dropdown action */}
             <Link to={'/about'}>
-                <h3>About product</h3>
+              <h3>About product</h3>
             </Link>
 
             {/* Cart button */}
