@@ -11,7 +11,7 @@ const ProductDetailView = () => {
 
   return (
     <div>
-      <div className='w-full px-5 lg:w-300 lg:px-0 lg:py-5 mx-auto'>       
+      <div className='w-full px-2 lg:w-300 lg:px-0 lg:py-5 mx-auto'>       
         <div className=' my-5 h-auto'>
           {
             product.map((product) => (
