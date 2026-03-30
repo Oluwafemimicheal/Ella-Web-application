@@ -11,7 +11,7 @@ const SaleProduct = () => {
   return (
     <div className='py-2'>
       <h2 className='text-center text-gold-soft'>Recommended for your personal use</h2>
-      <div className='h-80 w-full hero-3'>
+      <div className='h-auto lg:h-80 w-full hero-3'>
         <div className='bg-black/80 w-full h-full p-5'>
           <div className='w-7xl mx-auto flex items-center justify-between '>
 

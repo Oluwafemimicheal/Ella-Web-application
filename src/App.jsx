@@ -15,7 +15,7 @@ function App() {
       <header className='fixed top-0 left-0 w-full z-50 bg-white shadow-sm'>
         <Navbar />
       </header>
-      <main className='mt-26'>
+      <main className='mt-20 lg:mt-26'>
         <Routes>
           <Route index path='/' element={<Home />} />
           <Route index path='/about' element={<About />} />

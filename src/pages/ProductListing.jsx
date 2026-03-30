@@ -8,7 +8,7 @@ const ProductListing = () => {
   const { showData, status } = useProducts()
 
   return (
-    <div className="lg:w-300 mx-auto py-10 pb-20 lg:px-0 px-5">
+    <div className="lg:w-300 mx-auto lg:py-2 pb-20 lg:px-0 px-5">
       {/* <h1 className="font-bold text-amber-600 text-2xl mb-10">Recent Product</h1> */}
 
       {/* UI display if data is loading */}
@@ -23,16 +23,22 @@ const ProductListing = () => {
         </div>
       }
 
-      <ProductSection/>
+      <div className="hidden lg:block">
+        <ProductSection />
+      </div>
 
       {/* UI display if product api wes successfully*/}
-      <div className="my-10 grid lg:grid-cols-5 md:grid-cols-2 gap-3 gap-y-10">
-        {
-          showData.slice(0, 10)?.map((product, index) => {
+      <div className="pt-10">
+        <h1 className="font-semibold text-lg">All Product Available in Store </h1>
 
-            return <ProductDetails key={index} product={product} />
-          })
-        }
+        <div className="my-5 grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-1 lg:gap-3 lg:gap-y-8 gap-y-5">
+          {
+            showData.slice(0, 10)?.map((product, index) => {
+
+              return <ProductDetails key={index} product={product} />
+            })
+          }
+        </div>
       </div>
 
       <ProductSection sectionTitle="Weekend's Sale Packages" />
